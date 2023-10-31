@@ -69,11 +69,12 @@ struct GridView: View {
 		let yDim = CGFloat(1 / Double(height))
 		highlightedUnitRect = .init(origin: .init(x: xDim * Double(x), y: yDim * Double(y)), size: .init(width: xDim, height: yDim))
 	}
+	
 	func color(for x: Int, y: Int) -> Color {
 		if x == highlightedX, y == highlightedY { return .red }
 		
-		if highlightedAcross, y == highlightedY { return .yellow }
-		if !highlightedAcross, x == highlightedX { return .yellow }
+		if !highlightedAcross, highlightedX == x, let highlightedY, y / 5 == highlightedY / 5 { return .yellow }
+		if highlightedAcross, highlightedY == y, let highlightedX, x / 5 == highlightedX / 5 { return .yellow }
 		return .white
 	}
 }

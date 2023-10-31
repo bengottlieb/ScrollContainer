@@ -9,17 +9,15 @@ import SwiftUI
 import Suite
 
 struct ScrollContainer<Content: View>: UIViewRepresentable {
-	var focusedRect: UnitRect?
-	var visibleRect: UnitRect?
+	var focus: FocusInfo
 	let contentSize: CGSize
 	var maximumScale = 1.0
 	@ViewBuilder let content: () -> Content
 	
 	@Environment(\.scrollContainerProxyBinding) var scrollContainerProxyBinding
 	
-	public init(contentSize: CGSize, maximimumScale: Double = 1.0, focused: UnitRect?, visible: UnitRect?, @ViewBuilder content: @escaping () -> Content) {
-		self.focusedRect = focused
-		self.visibleRect = visible
+	public init(contentSize: CGSize, maximimumScale: Double = 1.0, focus: FocusInfo = .init(), @ViewBuilder content: @escaping () -> Content) {
+		self.focus = focus
 		self.contentSize = contentSize
 		self.maximumScale = maximimumScale
 		self.content = content
@@ -30,11 +28,11 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 	}
 	
 	func updateUIView(_ uiView: UIViewType, context: Context) {
-		context.coordinator.scrollTo(visible: visibleRect, focused: focusedRect)
+		context.coordinator.scrollTo(focus: focus)
 	}
 	
 	func makeCoordinator() -> Coordinator {
-		Coordinator(contentSize: contentSize, maximumScale: maximumScale, focused: focusedRect, visible: visibleRect, proxy: scrollContainerProxyBinding, content: content)
+		Coordinator(contentSize: contentSize, maximumScale: maximumScale, focus: focus, proxy: scrollContainerProxyBinding, content: content)
 	}
 }
 

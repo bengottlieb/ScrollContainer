@@ -15,7 +15,7 @@ struct ContentView: View {
     var body: some View {
 		 ScrollContainerReader { proxy in
 			 ZStack {
-				 ScrollContainer(contentSize: .init(width: 1024, height: 1024), focused: highlightedRect, visible: nil) {
+				 ScrollContainer(contentSize: .init(width: 1024, height: 1024), focus: .init(center: highlightedRect)) {
 					 GridView(selectedIndex: $index, highlightedUnitRect: $highlightedRect)
 				 }
 				 
@@ -27,16 +27,23 @@ struct ContentView: View {
 					 }
 					 
 					 HStack {
-						 Button(action: { index = (index ?? 0) - 1 }) {
+						 Button(action: { index = max(0, (index ?? 0) - 10) }) {
+							 Text("Prev - 10")
+						 }
+
+						 Button(action: { index = max(0, (index ?? 0) - 1) }) {
 							 Text("Prev")
 						 }
-						 .buttonStyle(.bordered)
 
-						 Button(action: { index = (index ?? -1) + 1 }) {
+						 Button(action: { index = min(255, (index ?? -1) + 1) }) {
 							 Text("Next")
 						 }
-						 .buttonStyle(.bordered)
+
+						 Button(action: { index = min(255, (index ?? -1) + 10) }) {
+							 Text("Next + 10")
+						 }
 					 }
+					 .buttonStyle(.bordered)
 				 }
 					 .padding()
 					 .background(Color.systemBackground)

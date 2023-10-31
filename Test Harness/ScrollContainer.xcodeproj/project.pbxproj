@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B5117EDD2AF1030200850A44 /* ScrollContainer.FocusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117EDC2AF1030100850A44 /* ScrollContainer.FocusInfo.swift */; };
 		B513BA172AEFDEFE0034B351 /* Suite in Frameworks */ = {isa = PBXBuildFile; productRef = B513BA162AEFDEFE0034B351 /* Suite */; };
 		B513BA2A2AEFDF1F0034B351 /* ScrollContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513BA252AEFDF1F0034B351 /* ScrollContainer.swift */; };
 		B513BA2B2AEFDF1F0034B351 /* ScrollContainer+Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513BA262AEFDF1F0034B351 /* ScrollContainer+Preferences.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B5117EDC2AF1030100850A44 /* ScrollContainer.FocusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContainer.FocusInfo.swift; sourceTree = "<group>"; };
 		B513BA252AEFDF1F0034B351 /* ScrollContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainer.swift; sourceTree = "<group>"; };
 		B513BA262AEFDF1F0034B351 /* ScrollContainer+Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollContainer+Preferences.swift"; sourceTree = "<group>"; };
 		B513BA272AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainer.ScrollView.swift; sourceTree = "<group>"; };
@@ -53,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				B513BA252AEFDF1F0034B351 /* ScrollContainer.swift */,
+				B5117EDC2AF1030100850A44 /* ScrollContainer.FocusInfo.swift */,
 				B513BA262AEFDF1F0034B351 /* ScrollContainer+Preferences.swift */,
 				B513BA272AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift */,
 				B513BA282AEFDF1F0034B351 /* ScrollContainerReader.swift */,
@@ -187,6 +190,7 @@
 			files = (
 				B513BA2C2AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift in Sources */,
 				B52FB37B2AEE7EE00093C8C5 /* ContentView.swift in Sources */,
+				B5117EDD2AF1030200850A44 /* ScrollContainer.FocusInfo.swift in Sources */,
 				B52FB3872AEE7EF30093C8C5 /* GridView.swift in Sources */,
 				B513BA2A2AEFDF1F0034B351 /* ScrollContainer.swift in Sources */,
 				B513BA2B2AEFDF1F0034B351 /* ScrollContainer+Preferences.swift in Sources */,
