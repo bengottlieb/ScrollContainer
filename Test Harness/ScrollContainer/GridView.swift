@@ -41,6 +41,7 @@ struct GridView: View {
 								}
 								updateSelection()
 							})
+							.frame(width: 40, height: 40)
 					}
 				}
 			}

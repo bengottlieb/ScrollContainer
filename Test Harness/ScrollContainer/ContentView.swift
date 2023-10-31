@@ -11,17 +11,23 @@ import Suite
 struct ContentView: View {
 	@State private var highlightedRect: UnitRect?
 	@State private var index: Int?
+	@State private var text = ""
 	
     var body: some View {
 		 ScrollContainerReader { proxy in
 			 ZStack {
-				 ScrollContainer(contentSize: .init(width: 1024, height: 1024), focus: .init(center: highlightedRect)) {
-					 GridView(selectedIndex: $index, highlightedUnitRect: $highlightedRect)
+				 ScrollContainer(contentSize: .init(width: 600, height: 600), focus: .init(center: highlightedRect)) {
+					 ZStack {
+						 GridView(selectedIndex: $index, highlightedUnitRect: $highlightedRect)
+						 TextField("Test", text: $text)
+							 .padding()
+							 .background { Color.red }
+					 }
 				 }
 				 
 				 VStack {
 					 Text("\(proxy.visibleUnitRect.description)")
-					 Text("\(proxy.contentOffset.description)")
+					 Text("\(proxy.contentOffset.description) x\(proxy.zoomScale.pretty(2))")
 					 if let highlightedRect {
 						 Text(highlightedRect.description)
 					 }

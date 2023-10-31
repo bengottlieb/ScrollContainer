@@ -12,12 +12,22 @@ extension ScrollContainer {
 	class ContainerScrollView: UIScrollView {
 		var coordinator: ScrollContainer.Coordinator!
 		
+		override var zoomScale: CGFloat {
+			didSet {
+				print("Zoom scale set to \(zoomScale)")
+			}
+		}
+		
 		func scaleToFit() {
-			zoomScale = min(bounds.width / contentSize.width, bounds.height / contentSize.height)
+			let newScale = min(bounds.width / contentSize.width, bounds.height / contentSize.height)
+			minimumZoomScale = min(newScale, 1.0)
+			zoomScale = newScale
 		}
 		
 		func scaleToFill() {
-			zoomScale = max(bounds.width / contentSize.width, bounds.height / contentSize.height)
+			let newScale = max(bounds.width / contentSize.width, bounds.height / contentSize.height)
+			minimumZoomScale = min(min(bounds.width / contentSize.width, bounds.height / contentSize.height), 1.0)
+			zoomScale = newScale
 		}
 		
 		override var frame: CGRect { didSet {

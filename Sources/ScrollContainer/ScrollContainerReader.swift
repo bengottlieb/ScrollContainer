@@ -11,6 +11,7 @@ import Suite
 public struct ScrollContainerProxy {
 	public var visibleUnitRect: UnitRect = .full
 	public var contentOffset: CGPoint = .zero
+	public var zoomScale = 1.0
 }
 
 

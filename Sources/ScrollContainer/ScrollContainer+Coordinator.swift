@@ -17,7 +17,7 @@ extension ScrollContainer {
 		var focus: FocusInfo
 		var scrollContainerProxyBinding: Binding<ScrollContainerProxy>
 		var indicators: VisibleScrollIndicators
-		var initialZoomAspect = ContentMode.fit
+		var initialZoomAspect = ContentMode.fill
 		var currentZoomAspect: ContentMode?
 		
 		init(contentSize: CGSize, maximumScale: Double, focus: FocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
@@ -28,20 +28,20 @@ extension ScrollContainer {
 			self.indicators = indicators
 			super.init()
 
-			controller = UIHostingController(rootView: FixedSize(size: contentSize.scaled(by: maximumScale), content: content))
+			controller = UIHostingController(rootView: FixedSize(size: contentSize, content: content))
 			
 			scrollView = ContainerScrollView()
 			scrollView.coordinator = self
 			scrollView.showsHorizontalScrollIndicator = indicators.contains(.horizontal)
 			scrollView.showsVerticalScrollIndicator = indicators.contains(.vertical)
 			scrollView.backgroundColor = .gray
+			scrollView.keyboardDismissMode = .none
 			scrollView.delegate = self
-			controller.view.frame = CGRect(origin: .zero, size: contentSize.scaled(by: maximumScale))
+			controller.view.frame = CGRect(origin: .zero, size: contentSize)
 			scrollView.addSubview(controller.view)
-			scrollView.contentSize = contentSize.scaled(by: maximumScale)
-			scrollView.zoomScale = 1 / maximumScale
-			scrollView.minimumZoomScale = 1 / maximumScale * 10
-			scrollView.maximumZoomScale = 1
+			scrollView.contentSize = contentSize
+		//	scrollView.zoomScale = 1 / maximumScale
+			scrollView.maximumZoomScale = maximumScale
 		}
 		
 		func updateContentMode() {
@@ -49,10 +49,15 @@ extension ScrollContainer {
 			if currentZoomAspect == nil {
 				switch initialZoomAspect {
 				case .fit:
+					currentZoomAspect = .fit
 					scrollView.scaleToFit()
+					scrollView.contentOffset = .zero
 				case .fill:
+					currentZoomAspect = .fill
 					scrollView.scaleToFill()
+					scrollView.contentOffset = .zero
 				}
+				updateOffsets()
 			}
 		}
 		
@@ -87,6 +92,7 @@ extension ScrollContainer {
 			DispatchQueue.main.async {
 				self.scrollContainerProxyBinding.wrappedValue.visibleUnitRect = self.scrollView.visibleUnitRect
 				self.scrollContainerProxyBinding.wrappedValue.contentOffset = self.scrollView.contentOffset
+				self.scrollContainerProxyBinding.wrappedValue.zoomScale = self.scrollView.zoomScale
 			}
 		}
 	}

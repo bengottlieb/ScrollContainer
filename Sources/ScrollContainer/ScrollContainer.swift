@@ -11,7 +11,7 @@ import Suite
 struct ScrollContainer<Content: View>: UIViewRepresentable {
 	var focus: FocusInfo
 	let contentSize: CGSize
-	var maximumScale = 1.0
+	var maximumScale = 2.0
 	let indicators: VisibleScrollIndicators
 	@ViewBuilder let content: () -> Content
 	

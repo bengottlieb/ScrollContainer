@@ -40,6 +40,7 @@
 		B52FB37C2AEE7EE10093C8C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B52FB37F2AEE7EE10093C8C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B52FB3862AEE7EF30093C8C5 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		B53302042AF12DE300C6F471 /* Suite */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Suite; path = ../../Suite; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				B513BA2F2AEFDF3A0034B351 /* Package.swift */,
+				B53302042AF12DE300C6F471 /* Suite */,
 				B52FB3772AEE7EE00093C8C5 /* ScrollContainer */,
 				B52FB3762AEE7EE00093C8C5 /* Products */,
 				B53301E62AEEDF1700C6F471 /* Frameworks */,
