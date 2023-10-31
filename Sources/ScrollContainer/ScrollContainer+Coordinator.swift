@@ -14,13 +14,13 @@ extension ScrollContainer {
 		let maximumScale: Double
 		var scrollView: ContainerScrollView!
 		var controller: UIHostingController<FixedSize<Content>>!
-		var focus: FocusInfo
+		var focus: ScrollFocusInfo
 		var scrollContainerProxyBinding: Binding<ScrollContainerProxy>
 		var indicators: VisibleScrollIndicators
 		var initialZoomAspect = ContentMode.fill
 		var currentZoomAspect: ContentMode?
 		
-		init(contentSize: CGSize, maximumScale: Double, focus: FocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
+		init(contentSize: CGSize, maximumScale: Double, focus: ScrollFocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
 			self.content = content
 			self.scrollContainerProxyBinding = proxy
 			self.maximumScale = maximumScale
@@ -99,7 +99,7 @@ extension ScrollContainer {
 }
 
 extension ScrollContainer.Coordinator {
-	func scrollTo(focus: ScrollContainer.FocusInfo, animationDuration: TimeInterval = 0.2) {
+	func scrollTo(focus: ScrollFocusInfo, animationDuration: TimeInterval = 0.2) {
 		if let center = focus.center, center != self.focus.center {
 			self.focus = focus
 			if !scrollView.visibleUnitRect.contains(center) {

@@ -8,9 +8,9 @@
 import SwiftUI
 
 public extension View {
-	@ViewBuilder func zoomScrollable(contentSize: CGSize, indicators: VisibleScrollIndicators = .all) -> some View {
+	@ViewBuilder func zoomScrollable(contentSize: CGSize, maximimumScale: Double = 2.0, focus: ScrollFocusInfo = .init(), indicators: VisibleScrollIndicators = .all) -> some View {
 		if #available(iOS 16.0, macOS 99, *) {
-			ScrollContainer(contentSize: contentSize, indicators: indicators) { self }
+			ScrollContainer(contentSize: contentSize, maximimumScale: maximimumScale, focus: focus, indicators: indicators) { self }
 		} else {
 			self
 		}

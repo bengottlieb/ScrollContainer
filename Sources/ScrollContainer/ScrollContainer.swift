@@ -9,7 +9,7 @@ import SwiftUI
 import Suite
 
 struct ScrollContainer<Content: View>: UIViewRepresentable {
-	var focus: FocusInfo
+	var focus: ScrollFocusInfo
 	let contentSize: CGSize
 	var maximumScale = 2.0
 	let indicators: VisibleScrollIndicators
@@ -17,7 +17,7 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 	
 	@Environment(\.scrollContainerProxyBinding) var scrollContainerProxyBinding
 	
-	public init(contentSize: CGSize, maximimumScale: Double = 2.0, focus: FocusInfo = .init(), indicators: VisibleScrollIndicators = .all, @ViewBuilder content: @escaping () -> Content) {
+	public init(contentSize: CGSize, maximimumScale: Double = 2.0, focus: ScrollFocusInfo = .init(), indicators: VisibleScrollIndicators = .all, @ViewBuilder content: @escaping () -> Content) {
 		self.focus = focus
 		self.contentSize = contentSize
 		self.maximumScale = maximimumScale
