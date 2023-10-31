@@ -6,9 +6,9 @@ import PackageDescription
 let package = Package(
     name: "ScrollContainer",
      platforms: [
-              .macOS(.v14),
-              .iOS(.v17),
-              .watchOS(.v10)
+              .macOS(.v13),
+              .iOS(.v16),
+              .watchOS(.v9)
          ],
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
