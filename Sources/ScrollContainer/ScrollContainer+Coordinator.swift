@@ -16,17 +16,21 @@ extension ScrollContainer {
 		var controller: UIHostingController<FixedSize<Content>>!
 		var focus: FocusInfo
 		var scrollContainerProxyBinding: Binding<ScrollContainerProxy>
+		var indicators: VisibleScrollIndicators
 		
-		init(contentSize: CGSize, maximumScale: Double, focus: FocusInfo, proxy: Binding<ScrollContainerProxy>, content: @escaping () -> Content) {
+		init(contentSize: CGSize, maximumScale: Double, focus: FocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
 			self.content = content
 			self.scrollContainerProxyBinding = proxy
 			self.maximumScale = maximumScale
 			self.focus = focus
+			self.indicators = indicators
 			super.init()
 
 			controller = UIHostingController(rootView: FixedSize(size: contentSize, content: content))
 			
 			scrollView = ContainerScrollView()
+			scrollView.showsHorizontalScrollIndicator = indicators.contains(.horizontal)
+			scrollView.showsVerticalScrollIndicator = indicators.contains(.vertical)
 			scrollView.backgroundColor = .gray
 			scrollView.delegate = self
 			controller.view.frame = CGRect(origin: .zero, size: contentSize)
