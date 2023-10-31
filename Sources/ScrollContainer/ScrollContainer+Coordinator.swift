@@ -68,6 +68,7 @@ extension ScrollContainer {
 			
 			DispatchQueue.main.async {
 				self.scrollContainerProxyBinding.wrappedValue.visibleUnitRect = self.scrollView.visibleUnitRect
+				self.scrollContainerProxyBinding.wrappedValue.visibleUnitRect = self.scrollView.visibleUnitRect
 			}
 		}
 	}
@@ -78,8 +79,9 @@ extension ScrollContainer.Coordinator {
 		if let focused, focused != focusedRect {
 			focusedRect = focused
 			if !scrollView.visibleUnitRect.contains(focused) {
-				var newOffsetX = focused.midX * scrollView.contentSize.width - scrollView.bounds.width / 2
-				var newOffsetY = focused.midY * scrollView.contentSize.height - scrollView.bounds.height / 2
+				let maxOffset = CGPoint(x: scrollView.contentSize.width - scrollView.bounds.width, y: scrollView.contentSize.height - scrollView.bounds.height)
+				var newOffsetX = min(maxOffset.x, focused.midX * scrollView.contentSize.width - scrollView.bounds.width / 2)
+				var newOffsetY = min(maxOffset.y, focused.midY * scrollView.contentSize.height - scrollView.bounds.height / 2)
 				
 				if newOffsetX < 0 { newOffsetX = 0 }
 				if newOffsetY < 0 { newOffsetY = 0 }

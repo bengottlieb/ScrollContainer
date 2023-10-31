@@ -10,6 +10,7 @@ import Suite
 
 public struct ScrollContainerProxy {
 	public var visibleUnitRect: UnitRect = .full
+	public var contentOffset: CGPoint = .zero
 }
 
 

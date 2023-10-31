@@ -21,6 +21,7 @@ struct ContentView: View {
 				 
 				 VStack {
 					 Text("\(proxy.visibleUnitRect.description)")
+					 Text("\(proxy.contentOffset.description)")
 					 if let highlightedRect {
 						 Text(highlightedRect.description)
 					 }
@@ -41,7 +42,7 @@ struct ContentView: View {
 					 .background(Color.systemBackground)
 					 .opacity(0.7)
 			 }
-			 .font(.caption)
+			 .font(.body.bold())
 		 }
     }
 }
