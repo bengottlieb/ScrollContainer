@@ -17,7 +17,7 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 	
 	@Environment(\.scrollContainerProxyBinding) var scrollContainerProxyBinding
 	
-	public init(contentSize: CGSize, maximimumScale: Double = 1.0, focus: FocusInfo = .init(), indicators: VisibleScrollIndicators = .all, @ViewBuilder content: @escaping () -> Content) {
+	public init(contentSize: CGSize, maximimumScale: Double = 2.0, focus: FocusInfo = .init(), indicators: VisibleScrollIndicators = .all, @ViewBuilder content: @escaping () -> Content) {
 		self.focus = focus
 		self.contentSize = contentSize
 		self.maximumScale = maximimumScale

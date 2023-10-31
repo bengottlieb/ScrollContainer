@@ -26,7 +26,7 @@ extension ScrollContainer {
 			self.indicators = indicators
 			super.init()
 
-			controller = UIHostingController(rootView: FixedSize(size: contentSize, content: content))
+			controller = UIHostingController(rootView: FixedSize(size: contentSize.scaled(by: maximumScale), content: content))
 			
 			scrollView = ContainerScrollView()
 			scrollView.showsHorizontalScrollIndicator = indicators.contains(.horizontal)
@@ -36,8 +36,9 @@ extension ScrollContainer {
 			controller.view.frame = CGRect(origin: .zero, size: contentSize)
 			scrollView.addSubview(controller.view)
 			scrollView.contentSize = contentSize
-			scrollView.minimumZoomScale = 0.5
-			scrollView.maximumZoomScale = 2
+//			scrollView.zoomScale = 1 / maximumScale
+//			scrollView.minimumZoomScale = 1 / maximumScale
+			scrollView.maximumZoomScale = maximumScale
 		}
 		
 		func viewForZooming(in scrollView: UIScrollView) -> UIView? {
