@@ -10,6 +10,20 @@ import Suite
 
 extension ScrollContainer {
 	class ContainerScrollView: UIScrollView {
+		var coordinator: ScrollContainer.Coordinator!
+		
+		func scaleToFit() {
+			zoomScale = min(bounds.width / contentSize.width, bounds.height / contentSize.height)
+		}
+		
+		func scaleToFill() {
+			zoomScale = max(bounds.width / contentSize.width, bounds.height / contentSize.height)
+		}
+		
+		override var frame: CGRect { didSet {
+			coordinator?.updateContentMode()
+		}}
+		
 		var visibleUnitRect: UnitRect {
 			if contentSize.width <= bounds.width, contentSize.height <= bounds.height, contentOffset.x <= 0, contentOffset.y <= 0 { return .full }
 			

@@ -17,6 +17,8 @@ extension ScrollContainer {
 		var focus: FocusInfo
 		var scrollContainerProxyBinding: Binding<ScrollContainerProxy>
 		var indicators: VisibleScrollIndicators
+		var initialZoomAspect = ContentMode.fit
+		var currentZoomAspect: ContentMode?
 		
 		init(contentSize: CGSize, maximumScale: Double, focus: FocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
 			self.content = content
@@ -29,16 +31,29 @@ extension ScrollContainer {
 			controller = UIHostingController(rootView: FixedSize(size: contentSize.scaled(by: maximumScale), content: content))
 			
 			scrollView = ContainerScrollView()
+			scrollView.coordinator = self
 			scrollView.showsHorizontalScrollIndicator = indicators.contains(.horizontal)
 			scrollView.showsVerticalScrollIndicator = indicators.contains(.vertical)
 			scrollView.backgroundColor = .gray
 			scrollView.delegate = self
-			controller.view.frame = CGRect(origin: .zero, size: contentSize)
+			controller.view.frame = CGRect(origin: .zero, size: contentSize.scaled(by: maximumScale))
 			scrollView.addSubview(controller.view)
-			scrollView.contentSize = contentSize
-//			scrollView.zoomScale = 1 / maximumScale
-//			scrollView.minimumZoomScale = 1 / maximumScale
-			scrollView.maximumZoomScale = maximumScale
+			scrollView.contentSize = contentSize.scaled(by: maximumScale)
+			scrollView.zoomScale = 1 / maximumScale
+			scrollView.minimumZoomScale = 1 / maximumScale * 10
+			scrollView.maximumZoomScale = 1
+		}
+		
+		func updateContentMode() {
+			guard scrollView.frame.width > 0 else { return }
+			if currentZoomAspect == nil {
+				switch initialZoomAspect {
+				case .fit:
+					scrollView.scaleToFit()
+				case .fill:
+					scrollView.scaleToFill()
+				}
+			}
 		}
 		
 		func viewForZooming(in scrollView: UIScrollView) -> UIView? {

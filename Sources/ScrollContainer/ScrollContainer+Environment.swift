@@ -8,12 +8,6 @@
 import SwiftUI
 import Suite
 
-struct ScrollContainerVisibleRectPreferenceKey: PreferenceKey {
-	static func reduce(value: inout UnitRect?, nextValue: () -> UnitRect?) {
-		value = nextValue() ?? value
-	}
-}
-
 struct ScrollContainerProxyBindingEnvironmentKey: EnvironmentKey {
 	static var defaultValue = Binding.constant(ScrollContainerProxy())
 }
