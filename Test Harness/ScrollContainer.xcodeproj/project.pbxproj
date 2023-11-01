@@ -7,32 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B5117EDD2AF1030200850A44 /* ScrollContainer.FocusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117EDC2AF1030100850A44 /* ScrollContainer.FocusInfo.swift */; };
-		B5117EE32AF1109F00850A44 /* ZoomScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117EE12AF1109F00850A44 /* ZoomScrollable.swift */; };
-		B5117EE42AF1109F00850A44 /* VisibleScrollIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5117EE22AF1109F00850A44 /* VisibleScrollIndicators.swift */; };
 		B513BA172AEFDEFE0034B351 /* Suite in Frameworks */ = {isa = PBXBuildFile; productRef = B513BA162AEFDEFE0034B351 /* Suite */; };
-		B513BA2A2AEFDF1F0034B351 /* ScrollContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513BA252AEFDF1F0034B351 /* ScrollContainer.swift */; };
-		B513BA2B2AEFDF1F0034B351 /* ScrollContainer+Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513BA262AEFDF1F0034B351 /* ScrollContainer+Environment.swift */; };
-		B513BA2C2AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513BA272AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift */; };
-		B513BA2D2AEFDF1F0034B351 /* ScrollContainerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513BA282AEFDF1F0034B351 /* ScrollContainerReader.swift */; };
-		B513BA2E2AEFDF1F0034B351 /* ScrollContainer+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B513BA292AEFDF1F0034B351 /* ScrollContainer+Coordinator.swift */; };
 		B52FB3792AEE7EE00093C8C5 /* ScrollContainerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FB3782AEE7EE00093C8C5 /* ScrollContainerApp.swift */; };
 		B52FB37B2AEE7EE00093C8C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FB37A2AEE7EE00093C8C5 /* ContentView.swift */; };
 		B52FB37D2AEE7EE10093C8C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52FB37C2AEE7EE10093C8C5 /* Assets.xcassets */; };
 		B52FB3802AEE7EE10093C8C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B52FB37F2AEE7EE10093C8C5 /* Preview Assets.xcassets */; };
 		B52FB3872AEE7EF30093C8C5 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52FB3862AEE7EF30093C8C5 /* GridView.swift */; };
 		B53301E82AEEDF1700C6F471 /* Suite in Frameworks */ = {isa = PBXBuildFile; productRef = B53301E72AEEDF1700C6F471 /* Suite */; };
+		B5D09C522AF2628000F2BE76 /* ScrollContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C4A2AF2628000F2BE76 /* ScrollContainer.swift */; };
+		B5D09C532AF2628000F2BE76 /* ScrollFocusInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C4B2AF2628000F2BE76 /* ScrollFocusInfo.swift */; };
+		B5D09C542AF2628000F2BE76 /* ScrollContainer+Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C4C2AF2628000F2BE76 /* ScrollContainer+Environment.swift */; };
+		B5D09C552AF2628000F2BE76 /* ScrollContainer.ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C4D2AF2628000F2BE76 /* ScrollContainer.ScrollView.swift */; };
+		B5D09C562AF2628000F2BE76 /* ScrollContainerReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C4E2AF2628000F2BE76 /* ScrollContainerReader.swift */; };
+		B5D09C572AF2628000F2BE76 /* ZoomScrollable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C4F2AF2628000F2BE76 /* ZoomScrollable.swift */; };
+		B5D09C582AF2628000F2BE76 /* VisibleScrollIndicators.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C502AF2628000F2BE76 /* VisibleScrollIndicators.swift */; };
+		B5D09C592AF2628000F2BE76 /* ScrollContainer+Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D09C512AF2628000F2BE76 /* ScrollContainer+Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B5117EDC2AF1030100850A44 /* ScrollContainer.FocusInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContainer.FocusInfo.swift; sourceTree = "<group>"; };
-		B5117EE12AF1109F00850A44 /* ZoomScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomScrollable.swift; sourceTree = "<group>"; };
-		B5117EE22AF1109F00850A44 /* VisibleScrollIndicators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibleScrollIndicators.swift; sourceTree = "<group>"; };
-		B513BA252AEFDF1F0034B351 /* ScrollContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainer.swift; sourceTree = "<group>"; };
-		B513BA262AEFDF1F0034B351 /* ScrollContainer+Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollContainer+Environment.swift"; sourceTree = "<group>"; };
-		B513BA272AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainer.ScrollView.swift; sourceTree = "<group>"; };
-		B513BA282AEFDF1F0034B351 /* ScrollContainerReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainerReader.swift; sourceTree = "<group>"; };
-		B513BA292AEFDF1F0034B351 /* ScrollContainer+Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollContainer+Coordinator.swift"; sourceTree = "<group>"; };
 		B513BA2F2AEFDF3A0034B351 /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../Package.swift; sourceTree = "<group>"; };
 		B52FB3752AEE7EE00093C8C5 /* ScrollContainer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScrollContainer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B52FB3782AEE7EE00093C8C5 /* ScrollContainerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollContainerApp.swift; sourceTree = "<group>"; };
@@ -41,6 +33,14 @@
 		B52FB37F2AEE7EE10093C8C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B52FB3862AEE7EF30093C8C5 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		B53302042AF12DE300C6F471 /* Suite */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Suite; path = ../../Suite; sourceTree = "<group>"; };
+		B5D09C4A2AF2628000F2BE76 /* ScrollContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainer.swift; sourceTree = "<group>"; };
+		B5D09C4B2AF2628000F2BE76 /* ScrollFocusInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollFocusInfo.swift; sourceTree = "<group>"; };
+		B5D09C4C2AF2628000F2BE76 /* ScrollContainer+Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollContainer+Environment.swift"; sourceTree = "<group>"; };
+		B5D09C4D2AF2628000F2BE76 /* ScrollContainer.ScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainer.ScrollView.swift; sourceTree = "<group>"; };
+		B5D09C4E2AF2628000F2BE76 /* ScrollContainerReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollContainerReader.swift; sourceTree = "<group>"; };
+		B5D09C4F2AF2628000F2BE76 /* ZoomScrollable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZoomScrollable.swift; sourceTree = "<group>"; };
+		B5D09C502AF2628000F2BE76 /* VisibleScrollIndicators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisibleScrollIndicators.swift; sourceTree = "<group>"; };
+		B5D09C512AF2628000F2BE76 /* ScrollContainer+Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ScrollContainer+Coordinator.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,22 +56,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B513BA242AEFDF1F0034B351 /* ScrollContainer */ = {
-			isa = PBXGroup;
-			children = (
-				B513BA252AEFDF1F0034B351 /* ScrollContainer.swift */,
-				B5117EE22AF1109F00850A44 /* VisibleScrollIndicators.swift */,
-				B5117EDC2AF1030100850A44 /* ScrollContainer.FocusInfo.swift */,
-				B513BA262AEFDF1F0034B351 /* ScrollContainer+Environment.swift */,
-				B513BA272AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift */,
-				B5117EE12AF1109F00850A44 /* ZoomScrollable.swift */,
-				B513BA282AEFDF1F0034B351 /* ScrollContainerReader.swift */,
-				B513BA292AEFDF1F0034B351 /* ScrollContainer+Coordinator.swift */,
-			);
-			name = ScrollContainer;
-			path = ../../Sources/ScrollContainer;
-			sourceTree = "<group>";
-		};
 		B52FB36C2AEE7EE00093C8C5 = {
 			isa = PBXGroup;
 			children = (
@@ -97,7 +81,7 @@
 				B52FB3782AEE7EE00093C8C5 /* ScrollContainerApp.swift */,
 				B52FB37A2AEE7EE00093C8C5 /* ContentView.swift */,
 				B52FB3862AEE7EF30093C8C5 /* GridView.swift */,
-				B513BA242AEFDF1F0034B351 /* ScrollContainer */,
+				B5D09C492AF2628000F2BE76 /* ScrollContainer */,
 				B52FB37C2AEE7EE10093C8C5 /* Assets.xcassets */,
 				B52FB37E2AEE7EE10093C8C5 /* Preview Content */,
 			);
@@ -117,6 +101,22 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5D09C492AF2628000F2BE76 /* ScrollContainer */ = {
+			isa = PBXGroup;
+			children = (
+				B5D09C4A2AF2628000F2BE76 /* ScrollContainer.swift */,
+				B5D09C4B2AF2628000F2BE76 /* ScrollFocusInfo.swift */,
+				B5D09C4C2AF2628000F2BE76 /* ScrollContainer+Environment.swift */,
+				B5D09C4D2AF2628000F2BE76 /* ScrollContainer.ScrollView.swift */,
+				B5D09C4E2AF2628000F2BE76 /* ScrollContainerReader.swift */,
+				B5D09C4F2AF2628000F2BE76 /* ZoomScrollable.swift */,
+				B5D09C502AF2628000F2BE76 /* VisibleScrollIndicators.swift */,
+				B5D09C512AF2628000F2BE76 /* ScrollContainer+Coordinator.swift */,
+			);
+			name = ScrollContainer;
+			path = ../../Sources/ScrollContainer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,17 +196,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B513BA2C2AEFDF1F0034B351 /* ScrollContainer.ScrollView.swift in Sources */,
+				B5D09C542AF2628000F2BE76 /* ScrollContainer+Environment.swift in Sources */,
+				B5D09C572AF2628000F2BE76 /* ZoomScrollable.swift in Sources */,
+				B5D09C592AF2628000F2BE76 /* ScrollContainer+Coordinator.swift in Sources */,
 				B52FB37B2AEE7EE00093C8C5 /* ContentView.swift in Sources */,
-				B5117EDD2AF1030200850A44 /* ScrollContainer.FocusInfo.swift in Sources */,
+				B5D09C582AF2628000F2BE76 /* VisibleScrollIndicators.swift in Sources */,
+				B5D09C552AF2628000F2BE76 /* ScrollContainer.ScrollView.swift in Sources */,
+				B5D09C562AF2628000F2BE76 /* ScrollContainerReader.swift in Sources */,
 				B52FB3872AEE7EF30093C8C5 /* GridView.swift in Sources */,
-				B5117EE42AF1109F00850A44 /* VisibleScrollIndicators.swift in Sources */,
-				B513BA2A2AEFDF1F0034B351 /* ScrollContainer.swift in Sources */,
-				B513BA2B2AEFDF1F0034B351 /* ScrollContainer+Environment.swift in Sources */,
+				B5D09C522AF2628000F2BE76 /* ScrollContainer.swift in Sources */,
+				B5D09C532AF2628000F2BE76 /* ScrollFocusInfo.swift in Sources */,
 				B52FB3792AEE7EE00093C8C5 /* ScrollContainerApp.swift in Sources */,
-				B513BA2D2AEFDF1F0034B351 /* ScrollContainerReader.swift in Sources */,
-				B5117EE32AF1109F00850A44 /* ZoomScrollable.swift in Sources */,
-				B513BA2E2AEFDF1F0034B351 /* ScrollContainer+Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

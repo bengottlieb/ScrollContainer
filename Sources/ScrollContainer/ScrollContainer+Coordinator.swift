@@ -100,22 +100,26 @@ extension ScrollContainer {
 
 extension ScrollContainer.Coordinator {
 	func scrollTo(focus: ScrollFocusInfo, animationDuration: TimeInterval = 0.2) {
-		if let center = focus.center, center != self.focus.center {
-			self.focus = focus
-			if !scrollView.visibleUnitRect.contains(center) {
-				let maxOffset = CGPoint(x: scrollView.contentSize.width - scrollView.bounds.width, y: scrollView.contentSize.height - scrollView.bounds.height)
-				var newOffsetX = min(maxOffset.x, center.midX * scrollView.contentSize.width - scrollView.bounds.width / 2)
-				var newOffsetY = min(maxOffset.y, center.midY * scrollView.contentSize.height - scrollView.bounds.height / 2)
-				
-				if newOffsetX < 0 { newOffsetX = 0 }
-				if newOffsetY < 0 { newOffsetY = 0 }
-				let newOffset = CGPoint(x: newOffsetX, y: newOffsetY)
-				
-				UIView.animate(withDuration: animationDuration) {
-					self.scrollView.contentOffset = newOffset
-				}
-//				scrollView.setContentOffset(newOffset, animated: false)
+		print("Re-focusing: \(focus.center?.description ?? "--"), \(focus.visible?.description ?? "--")")
+		UIView.animate(withDuration: animationDuration) { [unowned self] in
+			if let center = focus.center, center != self.focus.center {
+				self.focus = focus
+				refocus(on: center, resize: false)
 			}
 		}
+	}
+
+	func refocus(on unitRect: UnitRect, resize: Bool = false) {
+		if scrollView.visibleUnitRect.contains(unitRect) { return }
+		
+		let maxOffset = CGPoint(x: scrollView.contentSize.width - scrollView.bounds.width, y: scrollView.contentSize.height - scrollView.bounds.height)
+		var newOffsetX = min(maxOffset.x, unitRect.midX * scrollView.contentSize.width - scrollView.bounds.width / 2)
+		var newOffsetY = min(maxOffset.y, unitRect.midY * scrollView.contentSize.height - scrollView.bounds.height / 2)
+		
+		if newOffsetX < 0 { newOffsetX = 0 }
+		if newOffsetY < 0 { newOffsetY = 0 }
+		let newOffset = CGPoint(x: newOffsetX, y: newOffsetY)
+		
+		self.scrollView.contentOffset = newOffset
 	}
 }

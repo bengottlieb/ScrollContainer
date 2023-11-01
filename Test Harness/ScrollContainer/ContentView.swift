@@ -10,15 +10,16 @@ import Suite
 
 struct ContentView: View {
 	@State private var highlightedRect: UnitRect?
+	@State private var centeredRect: UnitRect?
 	@State private var index: Int?
 	@State private var text = ""
 	
     var body: some View {
 		 ScrollContainerReader { proxy in
 			 ZStack {
-				 ScrollContainer(contentSize: .init(width: 600, height: 600), focus: .init(center: highlightedRect)) {
+				 ScrollContainer(contentSize: .init(width: 600, height: 600), focus: .init(center: centeredRect, visible: highlightedRect, bias: .highlight)) {
 					 ZStack {
-						 GridView(selectedIndex: $index, highlightedUnitRect: $highlightedRect)
+						 GridView(selectedIndex: $index, centeredUnitRect: $centeredRect, highlightedUnitRect: $highlightedRect)
 						 TextField("Test", text: $text)
 							 .padding()
 							 .background { Color.red }

@@ -15,8 +15,9 @@ struct GridView: View {
 	let timer = Timer.publish(every: 0.5, on: .main, in: .common).autoconnect()
 	
 	@Binding var selectedIndex: Int?
+	@Binding var centeredUnitRect: UnitRect?
 	@Binding var highlightedUnitRect: UnitRect?
-	
+
 	@State private var highlightedX: Int?
 	@State private var highlightedY: Int?
 	@State private var highlightedAcross = true
@@ -68,7 +69,13 @@ struct GridView: View {
 		selectedIndex = y * width + x
 		let xDim = CGFloat(1 / Double(width))
 		let yDim = CGFloat(1 / Double(height))
-		highlightedUnitRect = .init(origin: .init(x: xDim * Double(x), y: yDim * Double(y)), size: .init(width: xDim, height: yDim))
+		centeredUnitRect = .init(origin: .init(x: xDim * Double(x), y: yDim * Double(y)), size: .init(width: xDim, height: yDim))
+		
+		if highlightedAcross {
+			highlightedUnitRect = .init(origin: .init(x: xDim * Double(x / 5), y: yDim * Double(y)), size: .init(width: xDim * 5, height: yDim))
+		} else {
+			highlightedUnitRect = .init(origin: .init(x: xDim * Double(x / 5), y: yDim * Double(y)), size: .init(width: xDim, height: yDim * 5))
+		}
 	}
 	
 	func color(for x: Int, y: Int) -> Color {
@@ -81,5 +88,5 @@ struct GridView: View {
 }
 
 #Preview {
-	GridView(selectedIndex: .constant(nil), highlightedUnitRect: .constant(nil))
+	GridView(selectedIndex: .constant(nil), centeredUnitRect: .constant(nil), highlightedUnitRect: .constant(nil))
 }
