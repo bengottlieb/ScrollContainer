@@ -29,8 +29,8 @@ struct ContentView: View {
 				 VStack {
 					 Text("\(proxy.visibleUnitRect.description)")
 					 Text("\(proxy.contentOffset.description) x\(proxy.zoomScale.pretty(2))")
-					 if let highlightedRect {
-						 Text(highlightedRect.description)
+					 if let centeredRect {
+						 Text(centeredRect.description)
 					 }
 					 
 					 HStack {

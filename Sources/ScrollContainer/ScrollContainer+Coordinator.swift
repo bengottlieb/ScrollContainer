@@ -100,26 +100,66 @@ extension ScrollContainer {
 
 extension ScrollContainer.Coordinator {
 	func scrollTo(focus: ScrollFocusInfo, animationDuration: TimeInterval = 0.2) {
-		print("Re-focusing: \(focus.center?.description ?? "--"), \(focus.visible?.description ?? "--")")
+		if focus == self.focus { return }
+		if let center = focus.center, scrollView.visibleUnitRect.contains(center) { return }
+
 		UIView.animate(withDuration: animationDuration) { [unowned self] in
+
+			if let visible = focus.visible {
+				refocus(on: visible, resize: false)
+			}
+
 			if let center = focus.center, center != self.focus.center {
-				self.focus = focus
 				refocus(on: center, resize: false)
 			}
+
+			self.focus = focus
 		}
 	}
 
 	func refocus(on unitRect: UnitRect, resize: Bool = false) {
 		if scrollView.visibleUnitRect.contains(unitRect) { return }
 		
+		var newOffset = scrollView.contentOffset
+		let visible = scrollView.visibleUnitRect.inset(width: 0.1, height: 0.1)
+		
 		let maxOffset = CGPoint(x: scrollView.contentSize.width - scrollView.bounds.width, y: scrollView.contentSize.height - scrollView.bounds.height)
-		var newOffsetX = min(maxOffset.x, unitRect.midX * scrollView.contentSize.width - scrollView.bounds.width / 2)
-		var newOffsetY = min(maxOffset.y, unitRect.midY * scrollView.contentSize.height - scrollView.bounds.height / 2)
+		var newOffsetX = min(maxOffset.x, unitRect.midX * scrollView.contentSize.width - scrollView.bounds.width * scrollView.zoomScale / 2)
+		var newOffsetY = min(maxOffset.y, unitRect.midY * scrollView.contentSize.height - scrollView.bounds.height * scrollView.zoomScale / 2)
 		
 		if newOffsetX < 0 { newOffsetX = 0 }
 		if newOffsetY < 0 { newOffsetY = 0 }
-		let newOffset = CGPoint(x: newOffsetX, y: newOffsetY)
+		
+		if visible.verticalOverlap(with: unitRect).height < unitRect.height {
+			newOffset.y = newOffsetY
+		}
+
+		if visible.horizontalOverlap(with: unitRect).width < unitRect.width {
+			newOffset.x = newOffsetX
+		}
 		
 		self.scrollView.contentOffset = newOffset
+	}
+}
+
+extension UnitRect {
+	func inset(width deltaWidth: CGFloat, height deltaHeight: CGFloat) -> UnitRect {
+		UnitRect(origin: UnitPoint(x: x + deltaWidth, y: y + deltaHeight), size: UnitSize(width: width - 2 * deltaWidth, height: height - 2 * deltaHeight))
+	}
+
+	func horizontalOverlap(with rect: UnitRect) -> UnitSize {
+		var copy = rect
+		copy.origin.y = y
+		copy.size.height = height
+		
+		return copy.overlap(with: self)?.size ?? .zero
+	}
+	
+	func verticalOverlap(with rect: UnitRect) -> UnitSize {
+		var copy = rect
+		copy.origin.x = x
+		copy.size.width = width
+		
+		return copy.overlap(with: self)?.size ?? .zero
 	}
 }

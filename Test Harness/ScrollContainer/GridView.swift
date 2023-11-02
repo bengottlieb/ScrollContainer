@@ -72,9 +72,9 @@ struct GridView: View {
 		centeredUnitRect = .init(origin: .init(x: xDim * Double(x), y: yDim * Double(y)), size: .init(width: xDim, height: yDim))
 		
 		if highlightedAcross {
-			highlightedUnitRect = .init(origin: .init(x: xDim * Double(x / 5), y: yDim * Double(y)), size: .init(width: xDim * 5, height: yDim))
+			highlightedUnitRect = .init(origin: .init(x: xDim * Double(x / 5) * 5, y: yDim * Double(y)), size: .init(width: xDim * 5, height: yDim))
 		} else {
-			highlightedUnitRect = .init(origin: .init(x: xDim * Double(x / 5), y: yDim * Double(y)), size: .init(width: xDim, height: yDim * 5))
+			highlightedUnitRect = .init(origin: .init(x: xDim * Double(x), y: yDim * Double(y / 5) * 5), size: .init(width: xDim, height: yDim * 5))
 		}
 	}
 	
