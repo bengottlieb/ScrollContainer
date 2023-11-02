@@ -16,13 +16,10 @@ struct ContentView: View {
 	
     var body: some View {
 		 ScrollContainerReader { proxy in
-			 ZStack {
+			 VStack {
 				 ScrollContainer(contentSize: .init(width: 600, height: 600), focus: .init(center: centeredRect, visible: highlightedRect, bias: .highlight)) {
 					 ZStack {
 						 GridView(selectedIndex: $index, centeredUnitRect: $centeredRect, highlightedUnitRect: $highlightedRect)
-						 TextField("Test", text: $text)
-							 .padding()
-							 .background { Color.red }
 					 }
 				 }
 				 

@@ -121,11 +121,11 @@ extension ScrollContainer.Coordinator {
 		if scrollView.visibleUnitRect.contains(unitRect) { return }
 		
 		var newOffset = scrollView.contentOffset
-		let visible = scrollView.visibleUnitRect.inset(width: 0.1, height: 0.1)
+		let visible = scrollView.visibleUnitRect//.inset(width: 0.1, height: 0.1)
 		
-		let maxOffset = CGPoint(x: scrollView.contentSize.width - scrollView.bounds.width, y: scrollView.contentSize.height - scrollView.bounds.height)
-		var newOffsetX = min(maxOffset.x, unitRect.midX * scrollView.contentSize.width - scrollView.bounds.width * scrollView.zoomScale / 2)
-		var newOffsetY = min(maxOffset.y, unitRect.midY * scrollView.contentSize.height - scrollView.bounds.height * scrollView.zoomScale / 2)
+		let maxOffset = CGPoint(x: scrollView.contentSize.width * 1 - scrollView.bounds.width, y: scrollView.contentSize.height * 1 - scrollView.bounds.height)
+		var newOffsetX = min(maxOffset.x, unitRect.midX * scrollView.contentSize.width - scrollView.bounds.width / 2)
+		var newOffsetY = min(maxOffset.y, unitRect.midY * scrollView.contentSize.height - scrollView.bounds.height / 2)
 		
 		if newOffsetX < 0 { newOffsetX = 0 }
 		if newOffsetY < 0 { newOffsetY = 0 }

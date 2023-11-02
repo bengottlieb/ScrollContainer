@@ -12,12 +12,6 @@ extension ScrollContainer {
 	class ContainerScrollView: UIScrollView {
 		var coordinator: ScrollContainer.Coordinator!
 		
-		override var zoomScale: CGFloat {
-			didSet {
-				print("Zoom scale set to \(zoomScale)")
-			}
-		}
-		
 		func scaleToFit() {
 			let newScale = min(bounds.width / contentSize.width, bounds.height / contentSize.height)
 			minimumZoomScale = min(newScale, 1.0)
