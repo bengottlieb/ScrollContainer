@@ -99,21 +99,21 @@ extension ScrollContainer {
 }
 
 extension ScrollContainer.Coordinator {
-	func scrollTo(focus: ScrollFocusInfo, animationDuration: TimeInterval = 0.2) {
-		if focus == self.focus { return }
-		if let center = focus.center, scrollView.visibleUnitRect.contains(center) { return }
+	func scrollTo(focus newFocus: ScrollFocusInfo, animationDuration: TimeInterval = 0.2) {
+		if newFocus == focus { return }
+		if let center = newFocus.center, scrollView.visibleUnitRect.contains(center), (newFocus.bias == .focus || newFocus.visible == nil) { return }
 
 		UIView.animate(withDuration: animationDuration) { [unowned self] in
 
-			if let visible = focus.visible {
+			if let visible = newFocus.visible {
 				refocus(on: visible, resize: false)
 			}
 
-			if let center = focus.center, center != self.focus.center {
+			if let center = newFocus.center, center != focus.center {
 				refocus(on: center, resize: false)
 			}
 
-			self.focus = focus
+			focus = newFocus
 		}
 	}
 

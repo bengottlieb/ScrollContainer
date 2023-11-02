@@ -9,7 +9,7 @@ import Foundation
 import Suite
 
 public struct ScrollFocusInfo: Equatable, Hashable, CustomStringConvertible {
-	public enum Bias: String, Hashable { case focus, highlight }
+	public enum Bias: String, Hashable { case focus, visible }
 	let center: UnitRect?
 	let visible: UnitRect?
 	let bias: Bias
