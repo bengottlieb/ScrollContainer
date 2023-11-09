@@ -38,6 +38,7 @@ extension ScrollContainer {
 			scrollView.keyboardDismissMode = .none
 			scrollView.delegate = self
 			controller.view.frame = CGRect(origin: .zero, size: contentSize)
+            scrollView.delaysContentTouches = false
 			scrollView.addSubview(controller.view)
 			scrollView.contentSize = contentSize
 		//	scrollView.zoomScale = 1 / maximumScale
