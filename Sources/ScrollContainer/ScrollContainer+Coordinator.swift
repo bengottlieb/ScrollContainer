@@ -19,13 +19,15 @@ extension ScrollContainer {
 		var indicators: VisibleScrollIndicators
 		var initialZoomAspect = ContentMode.fill
 		var currentZoomAspect: ContentMode?
+		var delaysContentTouches = true
 		
-		init(contentSize: CGSize, maximumScale: Double, focus: ScrollFocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
+		init(contentSize: CGSize, maximumScale: Double, delaysContentTouches: Bool, focus: ScrollFocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
 			self.content = content
 			self.scrollContainerProxyBinding = proxy
 			self.maximumScale = maximumScale
 			self.focus = focus
 			self.indicators = indicators
+			self.delaysContentTouches = delaysContentTouches
 			super.init()
 
 			controller = UIHostingController(rootView: FixedSize(size: contentSize, content: content))
@@ -38,7 +40,7 @@ extension ScrollContainer {
 			scrollView.keyboardDismissMode = .none
 			scrollView.delegate = self
 			controller.view.frame = CGRect(origin: .zero, size: contentSize)
-            scrollView.delaysContentTouches = false
+			scrollView.delaysContentTouches = delaysContentTouches
 			scrollView.addSubview(controller.view)
 			scrollView.contentSize = contentSize
 		//	scrollView.zoomScale = 1 / maximumScale
