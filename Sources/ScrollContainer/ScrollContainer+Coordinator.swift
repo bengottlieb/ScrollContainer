@@ -8,6 +8,7 @@
 import SwiftUI
 import Suite
 
+#if os(iOS)
 extension ScrollContainer {
 	class Coordinator: NSObject, UIScrollViewDelegate {
 		let content: () -> Content
@@ -166,3 +167,4 @@ extension UnitRect {
 		return copy.overlap(with: self)?.size ?? .zero
 	}
 }
+#endif

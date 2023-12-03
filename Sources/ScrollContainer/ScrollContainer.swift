@@ -8,6 +8,7 @@
 import SwiftUI
 import Suite
 
+#if os(iOS)
 struct ScrollContainer<Content: View>: UIViewRepresentable {
 	var focus: ScrollFocusInfo
 	let contentSize: CGSize
@@ -50,3 +51,4 @@ struct FixedSize<Content: View>: View {
 	}
 }
 
+#endif

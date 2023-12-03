@@ -8,6 +8,7 @@
 import SwiftUI
 import Suite
 
+#if os(iOS)
 extension ScrollContainer {
 	class ContainerScrollView: UIScrollView {
 		var coordinator: ScrollContainer.Coordinator!
@@ -54,3 +55,4 @@ extension ScrollContainer {
 		}
 	}
 }
+#endif
