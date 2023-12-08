@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
 		 ScrollContainerReader { proxy in
 			 VStack {
-				 ScrollContainer(contentSize: .init(width: 600, height: 600), focus: .init(center: centeredRect, visible: highlightedRect, bias: .highlight)) {
+                 ScrollContainer(contentSize: .init(width: 600, height: 600), focus: .init(center: centeredRect, visible: highlightedRect, bias: .focus)) {
 					 ZStack {
 						 GridView(selectedIndex: $index, centeredUnitRect: $centeredRect, highlightedUnitRect: $highlightedRect)
 					 }
