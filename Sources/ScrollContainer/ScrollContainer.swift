@@ -15,19 +15,21 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 	var maximumScale = 2.0
 	let indicators: VisibleScrollIndicators
 	var delaysContentTouches = false
-    var scrollEnabled = true
+	var scrollEnabled = true
+	var backgroundColor: Color
 	@ViewBuilder let content: () -> Content
 	
 	@Environment(\.scrollContainerProxyBinding) var scrollContainerProxyBinding
 	
-    public init(scrollEnabled: Bool = true, contentSize: CGSize, maximimumScale: Double = 2.0, delaysContentTouches: Bool = true, focus: ScrollFocusInfo = .init(), indicators: VisibleScrollIndicators = .all, @ViewBuilder content: @escaping () -> Content) {
+	public init(scrollEnabled: Bool = true, contentSize: CGSize, backgroundColor: Color = .black, maximimumScale: Double = 2.0, delaysContentTouches: Bool = true, focus: ScrollFocusInfo = .init(), indicators: VisibleScrollIndicators = .all, @ViewBuilder content: @escaping () -> Content) {
 		self.focus = focus
 		self.contentSize = contentSize
 		self.maximumScale = maximimumScale
 		self.content = content
 		self.indicators = indicators
 		self.delaysContentTouches = delaysContentTouches
-        self.scrollEnabled = scrollEnabled
+		self.scrollEnabled = scrollEnabled
+		self.backgroundColor = backgroundColor
 	}
 	
 	func makeUIView(context: Context) -> some UIView {
@@ -35,12 +37,12 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 	}
 	
 	func updateUIView(_ uiView: UIViewType, context: Context) {
-        context.coordinator.scrollEnabled = scrollEnabled
+		context.coordinator.scrollEnabled = scrollEnabled
 		context.coordinator.scrollTo(focus: focus)
 	}
 	
 	func makeCoordinator() -> Coordinator {
-        Coordinator(scrollEnabled: scrollEnabled, contentSize: contentSize, maximumScale: maximumScale, delaysContentTouches: delaysContentTouches, focus: focus, proxy: scrollContainerProxyBinding, indicators: indicators, content: content)
+		Coordinator(scrollEnabled: scrollEnabled, contentSize: contentSize, backgroundColor: backgroundColor, maximumScale: maximumScale, delaysContentTouches: delaysContentTouches, focus: focus, proxy: scrollContainerProxyBinding, indicators: indicators, content: content)
 	}
 }
 

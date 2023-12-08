@@ -21,33 +21,35 @@ extension ScrollContainer {
 		var initialZoomAspect = ContentMode.fill
 		var currentZoomAspect: ContentMode?
 		var delaysContentTouches = true
-        var scrollEnabled = true { didSet { scrollView.isScrollEnabled = scrollEnabled }}
+		var scrollEnabled = true { didSet { scrollView.isScrollEnabled = scrollEnabled }}
+		var backgroundColor: Color
 		
-        init(scrollEnabled: Bool, contentSize: CGSize, maximumScale: Double, delaysContentTouches: Bool, focus: ScrollFocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
+		init(scrollEnabled: Bool, contentSize: CGSize, backgroundColor: Color, maximumScale: Double, delaysContentTouches: Bool, focus: ScrollFocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
 			self.content = content
 			self.scrollContainerProxyBinding = proxy
 			self.maximumScale = maximumScale
 			self.focus = focus
 			self.indicators = indicators
-            self.scrollEnabled = scrollEnabled
+			self.scrollEnabled = scrollEnabled
 			self.delaysContentTouches = delaysContentTouches
+			self.backgroundColor = backgroundColor
 			super.init()
-
+			
 			controller = UIHostingController(rootView: FixedSize(size: contentSize, content: content))
 			
 			scrollView = ContainerScrollView()
 			scrollView.coordinator = self
 			scrollView.showsHorizontalScrollIndicator = indicators.contains(.horizontal)
 			scrollView.showsVerticalScrollIndicator = indicators.contains(.vertical)
-			scrollView.backgroundColor = .gray
+			scrollView.backgroundColor = UIColor(backgroundColor)
 			scrollView.keyboardDismissMode = .none
 			scrollView.delegate = self
-            scrollView.isScrollEnabled = scrollEnabled
+			scrollView.isScrollEnabled = scrollEnabled
 			controller.view.frame = CGRect(origin: .zero, size: contentSize)
 			scrollView.delaysContentTouches = delaysContentTouches
 			scrollView.addSubview(controller.view)
 			scrollView.contentSize = contentSize
-		//	scrollView.zoomScale = 1 / maximumScale
+			//	scrollView.zoomScale = 1 / maximumScale
 			scrollView.maximumZoomScale = maximumScale
 		}
 		
@@ -109,21 +111,21 @@ extension ScrollContainer.Coordinator {
 	func scrollTo(focus newFocus: ScrollFocusInfo, animationDuration: TimeInterval = 0.2) {
 		if newFocus == focus { return }
 		if let center = newFocus.center, scrollView.visibleUnitRect.contains(center), (newFocus.bias == .focus || newFocus.visible == nil) { return }
-
+		
 		UIView.animate(withDuration: animationDuration) { [unowned self] in
-
+			
 			if let visible = newFocus.visible {
 				refocus(on: visible, resize: false)
 			}
-
+			
 			if let center = newFocus.center, center != focus.center {
 				refocus(on: center, resize: false)
 			}
-
+			
 			focus = newFocus
 		}
 	}
-
+	
 	func refocus(on unitRect: UnitRect, resize: Bool = false) {
 		if scrollView.visibleUnitRect.contains(unitRect) { return }
 		
@@ -140,7 +142,7 @@ extension ScrollContainer.Coordinator {
 		if visible.verticalOverlap(with: unitRect).height < unitRect.height {
 			newOffset.y = newOffsetY
 		}
-
+		
 		if visible.horizontalOverlap(with: unitRect).width < unitRect.width {
 			newOffset.x = newOffsetX
 		}
@@ -153,7 +155,7 @@ extension UnitRect {
 	func inset(width deltaWidth: CGFloat, height deltaHeight: CGFloat) -> UnitRect {
 		UnitRect(origin: UnitPoint(x: x + deltaWidth, y: y + deltaHeight), size: UnitSize(width: width - 2 * deltaWidth, height: height - 2 * deltaHeight))
 	}
-
+	
 	func horizontalOverlap(with rect: UnitRect) -> UnitSize {
 		var copy = rect
 		copy.origin.y = y
