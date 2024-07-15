@@ -17,7 +17,7 @@ let package = Package(
             targets: ["ScrollContainer"]),
     ],
 	 dependencies: [
-		.package(url: "https://github.com/bengottlieb/suite", from: "1.0.98"),
+		.package(url: "https://github.com/ios-tooling/suite", from: "1.0.139"),
 	 ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.

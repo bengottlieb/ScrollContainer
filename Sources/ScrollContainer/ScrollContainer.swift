@@ -17,11 +17,12 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 	var delaysContentTouches = false
 	var scrollEnabled = true
 	var backgroundColor: Color
+	var toFit = false
 	@ViewBuilder let content: () -> Content
 	
 	@Environment(\.scrollContainerProxyBinding) var scrollContainerProxyBinding
 	
-	public init(scrollEnabled: Bool = true, contentSize: CGSize, backgroundColor: Color = .black, maximimumScale: Double = 2.0, delaysContentTouches: Bool = true, focus: ScrollFocusInfo = .init(), indicators: VisibleScrollIndicators = .all, @ViewBuilder content: @escaping () -> Content) {
+	public init(scrollEnabled: Bool = true, contentSize: CGSize, backgroundColor: Color = .black, maximimumScale: Double = 2.0, delaysContentTouches: Bool = true, focus: ScrollFocusInfo = .init(), indicators: VisibleScrollIndicators = .all, toFit: Bool = false, @ViewBuilder content: @escaping () -> Content) {
 		self.focus = focus
 		self.contentSize = contentSize
 		self.maximumScale = maximimumScale
@@ -30,6 +31,7 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 		self.delaysContentTouches = delaysContentTouches
 		self.scrollEnabled = scrollEnabled
 		self.backgroundColor = backgroundColor
+		self.toFit = toFit
 	}
 	
 	func makeUIView(context: Context) -> some UIView {
@@ -42,7 +44,7 @@ struct ScrollContainer<Content: View>: UIViewRepresentable {
 	}
 	
 	func makeCoordinator() -> Coordinator {
-		Coordinator(scrollEnabled: scrollEnabled, contentSize: contentSize, backgroundColor: backgroundColor, maximumScale: maximumScale, delaysContentTouches: delaysContentTouches, focus: focus, proxy: scrollContainerProxyBinding, indicators: indicators, content: content)
+		Coordinator(scrollEnabled: scrollEnabled, contentSize: contentSize, backgroundColor: backgroundColor, maximumScale: maximumScale, delaysContentTouches: delaysContentTouches, focus: focus, proxy: scrollContainerProxyBinding, indicators: indicators, toFit: toFit, content: content)
 	}
 }
 

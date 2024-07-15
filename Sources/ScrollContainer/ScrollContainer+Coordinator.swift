@@ -24,7 +24,7 @@ extension ScrollContainer {
 		var scrollEnabled = true { didSet { scrollView.isScrollEnabled = scrollEnabled }}
 		var backgroundColor: Color
 		
-		init(scrollEnabled: Bool, contentSize: CGSize, backgroundColor: Color, maximumScale: Double, delaysContentTouches: Bool, focus: ScrollFocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, content: @escaping () -> Content) {
+		init(scrollEnabled: Bool, contentSize: CGSize, backgroundColor: Color, maximumScale: Double, delaysContentTouches: Bool, focus: ScrollFocusInfo, proxy: Binding<ScrollContainerProxy>, indicators: VisibleScrollIndicators, toFit: Bool, content: @escaping () -> Content) {
 			self.content = content
 			self.scrollContainerProxyBinding = proxy
 			self.maximumScale = maximumScale
@@ -51,6 +51,7 @@ extension ScrollContainer {
 			scrollView.contentSize = contentSize
 			//	scrollView.zoomScale = 1 / maximumScale
 			scrollView.maximumZoomScale = maximumScale
+			if toFit { initialZoomAspect = .fit }
 		}
 		
 		func updateContentMode() {
