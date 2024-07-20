@@ -24,15 +24,19 @@ extension ScrollContainer {
 			self.coordinator = coordinator
 			self.frame = frame
 			
-			addAsObserver(of: UIApplication.keyboardWillShowNotification, selector: #selector(keyboardWillShow))
-			addAsObserver(of: UIApplication.keyboardWillHideNotification, selector: #selector(keyboardWillHide))
+//			addAsObserver(of: UIApplication.keyboardWillShowNotification, selector: #selector(keyboardWillShow))
+//			addAsObserver(of: UIApplication.keyboardWillHideNotification, selector: #selector(keyboardWillHide))
 		}
 		
 		@objc func keyboardWillShow(_ note: Notification) {
-			if let frame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect, let window {
+			if let keyboardFrame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect, let window {
 				let myFrame = self.convert(frame, to: window)
-				let overlay = myFrame.intersection(frame)
+				let overlay = myFrame.intersection(keyboardFrame)
 				contentInset = UIEdgeInsets(top: 0, left: 0, bottom: overlay.height, right: 0)
+				print("Scroll frame: \(frame)")
+				print("Keyboard frame: \(keyboardFrame)")
+				print("Screen frame: \(UIScreen.main.bounds)")
+				print("Overlap: \(overlay.height)")
 			}
 		}
 		
