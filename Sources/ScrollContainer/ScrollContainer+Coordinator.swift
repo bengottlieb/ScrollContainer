@@ -37,7 +37,7 @@ extension ScrollContainer {
 			
 			controller = UIHostingController(rootView: FixedSize(size: contentSize, content: content))
 			
-			scrollView = ContainerScrollView()
+			scrollView = ContainerScrollView(coordinator: self, frame: .zero)
 			scrollView.coordinator = self
 			scrollView.showsHorizontalScrollIndicator = indicators.contains(.horizontal)
 			scrollView.showsVerticalScrollIndicator = indicators.contains(.vertical)
@@ -55,7 +55,7 @@ extension ScrollContainer {
 		}
 		
 		func updateContentMode() {
-			guard scrollView.frame.width > 0 else { return }
+			guard let scrollView, scrollView.frame.width > 0 else { return }
 			if currentZoomAspect == nil {
 				switch initialZoomAspect {
 				case .fit:
