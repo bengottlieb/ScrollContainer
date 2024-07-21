@@ -21,7 +21,7 @@ import Suite
 		if let keyboardFrame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
 			let overlay = frame.intersection(keyboardFrame)
 			withAnimation {
-				keyboardHeight = overlay.height + 90
+				keyboardHeight = overlay.height
 			}
 		}
 	}
@@ -52,6 +52,7 @@ struct KeyboardMarginHandlingView<Content: View>: View {
 
 public extension View {
 	func handlesKeyboardMargin() -> some View {
-		KeyboardMarginHandlingView { self }
+		self
+		//KeyboardMarginHandlingView { self }
 	}
 }
