@@ -23,28 +23,8 @@ extension ScrollContainer {
 			super.init(frame: frame)
 			self.coordinator = coordinator
 			self.frame = frame
-			
-			addAsObserver(of: UIApplication.keyboardWillShowNotification, selector: #selector(keyboardWillShow))
-			addAsObserver(of: UIApplication.keyboardWillHideNotification, selector: #selector(keyboardWillHide))
 		}
 		
-		@objc func keyboardWillShow(_ note: Notification) {
-			print(note)
-			if let keyboardFrame = note.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect, let window {
-				let myFrame = self.convert(frame, to: window)
-				let overlay = myFrame.intersection(keyboardFrame)
-				contentInset = UIEdgeInsets(top: 0, left: 0, bottom: overlay.height, right: 0)
-				print("Scroll frame: \(frame)")
-				print("Keyboard frame: \(keyboardFrame)")
-				print("Screen frame: \(UIScreen.main.bounds)")
-				print("Overlap: \(overlay.height)")
-			}
-		}
-		
-		@objc func keyboardWillHide(_ note: Notification) {
-			contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-		}
-
 		required init?(coder: NSCoder) {
 			fatalError("init(coder:) not supported for ScrollContainer")
 		}
